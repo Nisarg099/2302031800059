@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Escape Quest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+
+        /* Custom Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #374151;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #EAB308;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <i class="fas fa-key text-2xl text-yellow-500 mr-2"></i>
+                        <span class="text-xl font-bold">Escape Quest</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="rooms.html" class="hover:text-yellow-500 transition-colors">Rooms</a>
+                    <a href="leaderboard.html" class="hover:text-yellow-500 transition-colors">Leaderboard</a>
+                    <a href="help.html" class="hover:text-yellow-500 transition-colors">Help Center</a>
+                    <a href="profile.html" class="hover:text-yellow-500 transition-colors">Profile</a>
+                    <a href="settings.html" class="text-yellow-500">Settings</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Settings Content -->
+    <div class="pt-32 pb-20 px-6">
+        <div class="container mx-auto">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-3xl font-bold mb-8">Settings</h1>
+
+                <!-- Settings Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Settings Navigation -->
+                    <div class="glass-effect rounded-xl p-6">
+                        <nav class="space-y-2">
+                            <a href="#account" class="flex items-center gap-3 text-yellow-500 p-3 rounded-lg bg-slate-800">
+                                <i class="fas fa-user"></i>
+                                <span>Account</span>
+                            </a>
+                            <a href="#preferences" class="flex items-center gap-3 text-gray-400 p-3 rounded-lg hover:bg-slate-800">
+                                <i class="fas fa-cog"></i>
+                                <span>Preferences</span>
+                            </a>
+                            <a href="#notifications" class="flex items-center gap-3 text-gray-400 p-3 rounded-lg hover:bg-slate-800">
+                                <i class="fas fa-bell"></i>
+                                <span>Notifications</span>
+                            </a>
+                            <a href="#privacy" class="flex items-center gap-3 text-gray-400 p-3 rounded-lg hover:bg-slate-800">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Privacy</span>
+                            </a>
+                            <a href="#billing" class="flex items-center gap-3 text-gray-400 p-3 rounded-lg hover:bg-slate-800">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Billing</span>
+                            </a>
+                        </nav>
+                    </div>
+
+                    <!-- Settings Content -->
+                    <div class="md:col-span-2 space-y-8">
+                        <!-- Account Settings -->
+                        <div class="glass-effect rounded-xl p-6">
+                            <h2 class="text-xl font-bold mb-6">Account Settings</h2>
+                            <div class="space-y-6">
+                                <!-- Profile Picture -->
+                                <div class="flex items-center gap-4">
+                                    <div class="w-16 h-16 rounded-full bg-cover bg-center" 
+                                         style="background-image: url('https://i.pravatar.cc/150?img=1')"></div>
+                                    <div>
+                                        <button class="bg-yellow-500 text-black px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors">
+                                            Change Photo
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Account Form -->
+                                <div class="space-y-4">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-400 mb-2">First Name</label>
+                                            <input type="text" value="Alex" 
+                                                   class="w-full bg-slate-800 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-400 mb-2">Last Name</label>
+                                            <input type="text" value="Smith" 
+                                                   class="w-full bg-slate-800 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                                        <input type="email" value="alex.smith@example.com" 
+                                               class="w-full bg-slate-800 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-400 mb-2">Username</label>
+                                        <input type="text" value="alexsmith" 
+                                               class="w-full bg-slate-800 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game Preferences -->
+                        <div class="glass-effect rounded-xl p-6">
+                            <h2 class="text-xl font-bold mb-6">Game Preferences</h2>
+                            <div class="space-y-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-semibold">Sound Effects</h3>
+                                        <p class="text-sm text-gray-400">Enable game sound effects</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-semibold">Background Music</h3>
+                                        <p class="text-sm text-gray-400">Enable background music</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-semibold">Show Timer</h3>
+                                        <p class="text-sm text-gray-400">Display countdown timer during games</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-400 mb-2">Difficulty Level</label>
+                                    <select class="w-full bg-slate-800 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                        <option>Normal</option>
+                                        <option>Hard</option>
+                                        <option>Expert</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notification Settings -->
+                        <div class="glass-effect rounded-xl p-6">
+                            <h2 class="text-xl font-bold mb-6">Notification Settings</h2>
+                            <div class="space-y-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-semibold">Game Invites</h3>
+                                        <p class="text-sm text-gray-400">Receive game invitation notifications</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-semibold">Friend Requests</h3>
+                                        <p class="text-sm text-gray-400">Receive friend request notifications</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-semibold">Achievement Alerts</h3>
+                                        <p class="text-sm text-gray-400">Get notified about new achievements</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Privacy Settings -->
+                        <div class="glass-effect rounded-xl p-6">
+                            <h2 class="text-xl font-bold mb-6">Privacy Settings</h2>
+                            <div class="space-y-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-semibold">Profile Visibility</h3>
+                                        <p class="text-sm text-gray-400">Make your profile visible to others</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-semibold">Show Online Status</h3>
+                                        <p class="text-sm text-gray-400">Display your online status to friends</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-semibold">Share Game Activity</h3>
+                                        <p class="text-sm text-gray-400">Share your game progress and achievements</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Save Button -->
+                        <div class="flex justify-end">
+                            <button class="bg-yellow-500 text-black px-8 py-3 rounded-lg hover:bg-yellow-600 transition-colors">
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

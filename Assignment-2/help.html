@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Escape Quest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <i class="fas fa-key text-2xl text-yellow-500 mr-2"></i>
+                        <span class="text-xl font-bold">Escape Quest</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="rooms.html" class="hover:text-yellow-500 transition-colors">Rooms</a>
+                    <a href="leaderboard.html" class="hover:text-yellow-500 transition-colors">Leaderboard</a>
+                    <a href="help.html" class="text-yellow-500">Help Center</a>
+                    <a href="profile.html" class="hover:text-yellow-500 transition-colors">Profile</a>
+                    <a href="settings.html" class="hover:text-yellow-500 transition-colors">Settings</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-32 pb-20 px-6">
+        <div class="container mx-auto">
+            <!-- Help Center Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold mb-4">How Can We Help You?</h1>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Find answers to common questions, learn game mechanics, or get in touch with our support team.
+                </p>
+                <div class="mt-8">
+                    <div class="max-w-xl mx-auto relative">
+                        <input type="text" 
+                               placeholder="Search for help..." 
+                               class="w-full bg-slate-800 text-white px-6 py-3 rounded-lg pl-12 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Help Categories -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <a href="#" class="glass-effect p-6 rounded-xl text-center hover-scale">
+                    <i class="fas fa-book text-4xl text-yellow-500 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">Getting Started</h3>
+                    <p class="text-gray-400 text-sm">New to Escape Quest? Start here!</p>
+                </a>
+                <a href="#" class="glass-effect p-6 rounded-xl text-center hover-scale">
+                    <i class="fas fa-puzzle-piece text-4xl text-blue-500 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">Game Mechanics</h3>
+                    <p class="text-gray-400 text-sm">Learn how to play and solve puzzles</p>
+                </a>
+                <a href="#" class="glass-effect p-6 rounded-xl text-center hover-scale">
+                    <i class="fas fa-users text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">Multiplayer Guide</h3>
+                    <p class="text-gray-400 text-sm">Team up and play with friends</p>
+                </a>
+                <a href="#" class="glass-effect p-6 rounded-xl text-center hover-scale">
+                    <i class="fas fa-cog text-4xl text-purple-500 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2">Technical Support</h3>
+                    <p class="text-gray-400 text-sm">Fix common issues and bugs</p>
+                </a>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="glass-effect rounded-xl p-6">
+                        <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+                        <div class="space-y-4">
+                            <div class="faq-item p-4 rounded-lg">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold mb-2">How do I create or join a room?</h3>
+                                        <p class="text-gray-400">
+                                            To create a room, go to the Rooms page and click "Create Room". To join, either use a room code or 
+                                            select "Join Room" from the available rooms list.
+                                        </p>
+                                    </div>
+                                    <button class="text-yellow-500 ml-4">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="faq-item p-4 rounded-lg">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold mb-2">What happens if I lose connection during a game?</h3>
+                                        <p class="text-gray-400">
+                                            Don't worry! The game automatically saves your progress. You can rejoin the room using 
+                                            the same room code within 30 minutes.
+                                        </p>
+                                    </div>
+                                    <button class="text-yellow-500 ml-4">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="faq-item p-4 rounded-lg">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold mb-2">How do hints work?</h3>
+                                        <p class="text-gray-400">
+                                            Each room comes with 3 hints. Using a hint will provide a clue about your current 
+                                            objective. Note that using hints affects your final score.
+                                        </p>
+                                    </div>
+                                    <button class="text-yellow-500 ml-4">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Support -->
+                <div class="space-y-8">
+                    <div class="glass-effect rounded-xl p-6">
+                        <h2 class="text-2xl font-bold mb-6">Contact Support</h2>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Your Name</label>
+                                <input type="text" class="w-full bg-slate-800 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
+                                <input type="email" class="w-full bg-slate-800 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Issue Type</label>
+                                <select class="w-full bg-slate-800 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                    <option>Technical Problem</option>
+                                    <option>Account Issue</option>
+                                    <option>Gameplay Question</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                                <textarea rows="4" class="w-full bg-slate-800 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+                            </div>
+                            <button class="w-full bg-yellow-500 text-black py-2 rounded-lg hover:bg-yellow-600 transition-colors">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="glass-effect rounded-xl p-6">
+                        <h2 class="text-xl font-bold mb-4">Quick Links</h2>
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="#" class="flex items-center text-gray-400 hover:text-yellow-500 transition-colors">
+                                    <i class="fas fa-book-open mr-3"></i>
+                                    Game Manual
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-gray-400 hover:text-yellow-500 transition-colors">
+                                    <i class="fas fa-video mr-3"></i>
+                                    Video Tutorials
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-gray-400 hover:text-yellow-500 transition-colors">
+                                    <i class="fas fa-keyboard mr-3"></i>
+                                    Keyboard Shortcuts
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-gray-400 hover:text-yellow-500 transition-colors">
+                                    <i class="fas fa-shield-alt mr-3"></i>
+                                    Privacy Policy
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

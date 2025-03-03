@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard & Achievements - Escape Quest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+
+        .player-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .achievement-badge {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            margin: 0 auto;
+        }
+
+        .achievement-locked {
+            filter: grayscale(100%);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <i class="fas fa-key text-2xl text-yellow-500 mr-2"></i>
+                        <span class="text-xl font-bold">Escape Quest</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="rooms.html" class="hover:text-yellow-500 transition-colors">Rooms</a>
+                    <a href="leaderboard.html" class="text-yellow-500">Leaderboard</a>
+                    <a href="help.html" class="hover:text-yellow-500 transition-colors">Help Center</a>
+                    <a href="profile.html" class="hover:text-yellow-500 transition-colors">Profile</a>
+                    <a href="settings.html" class="hover:text-yellow-500 transition-colors">Settings</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-32 pb-20 px-6">
+        <div class="container mx-auto">
+            <!-- Header Tabs -->
+            <div class="flex gap-4 mb-8">
+                <button class="bg-yellow-500 text-black px-6 py-2 rounded-lg font-semibold">Leaderboard</button>
+                <button class="glass-effect px-6 py-2 rounded-lg">Achievements</button>
+                <button class="glass-effect px-6 py-2 rounded-lg">Statistics</button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Global Rankings -->
+                <div class="lg:col-span-2">
+                    <div class="glass-effect rounded-xl p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold">Global Rankings</h2>
+                            <select class="bg-slate-800 text-white px-4 py-2 rounded-lg">
+                                <option>All Time</option>
+                                <option>This Month</option>
+                                <option>This Week</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Top 3 Players -->
+                        <div class="grid grid-cols-3 gap-4 mb-8">
+                            <!-- 2nd Place -->
+                            <div class="text-center order-1">
+                                <div class="player-avatar w-16 h-16 mx-auto mb-2 border-4 border-gray-500" 
+                                     style="background-image: url('https://i.pravatar.cc/150?img=2')"></div>
+                                <div class="text-xl font-bold text-gray-300">#2</div>
+                                <div class="font-semibold">Sarah Johnson</div>
+                                <div class="text-sm text-gray-400">2,850 pts</div>
+                            </div>
+                            <!-- 1st Place -->
+                            <div class="text-center order-0">
+                                <div class="player-avatar w-20 h-20 mx-auto mb-2 border-4 border-yellow-500" 
+                                     style="background-image: url('https://i.pravatar.cc/150?img=1')"></div>
+                                <div class="text-2xl font-bold text-yellow-500">#1</div>
+                                <div class="font-semibold">Alex Smith</div>
+                                <div class="text-sm text-gray-400">3,120 pts</div>
+                            </div>
+                            <!-- 3rd Place -->
+                            <div class="text-center order-2">
+                                <div class="player-avatar w-16 h-16 mx-auto mb-2 border-4 border-yellow-800" 
+                                     style="background-image: url('https://i.pravatar.cc/150?img=3')"></div>
+                                <div class="text-xl font-bold text-yellow-800">#3</div>
+                                <div class="font-semibold">Mike Chen</div>
+                                <div class="text-sm text-gray-400">2,640 pts</div>
+                            </div>
+                        </div>
+
+                        <!-- Rankings Table -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="text-left border-b border-gray-700">
+                                        <th class="pb-4 font-semibold">Rank</th>
+                                        <th class="pb-4 font-semibold">Player</th>
+                                        <th class="pb-4 font-semibold">Rooms Completed</th>
+                                        <th class="pb-4 font-semibold">Time</th>
+                                        <th class="pb-4 font-semibold text-right">Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-gray-300">
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-4">4</td>
+                                        <td class="py-4">
+                                            <div class="flex items-center gap-3">
+                                                <div class="player-avatar w-8 h-8" 
+                                                     style="background-image: url('https://i.pravatar.cc/150?img=4')"></div>
+                                                <span>Emma Wilson</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-4">15</td>
+                                        <td class="py-4">42:15</td>
+                                        <td class="py-4 text-right">2,480</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-4">5</td>
+                                        <td class="py-4">
+                                            <div class="flex items-center gap-3">
+                                                <div class="player-avatar w-8 h-8" 
+                                                     style="background-image: url('https://i.pravatar.cc/150?img=5')"></div>
+                                                <span>James Lee</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-4">14</td>
+                                        <td class="py-4">45:30</td>
+                                        <td class="py-4 text-right">2,350</td>
+                                    </tr>
+                                    <!-- More rows... -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements Section -->
+                <div class="space-y-8">
+                    <!-- Recent Achievements -->
+                    <div class="glass-effect rounded-xl p-6">
+                        <h2 class="text-2xl font-bold mb-6">Recent Achievements</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 bg-slate-800 p-3 rounded-lg">
+                                <div class="achievement-badge bg-gradient-to-r from-purple-500 to-pink-500">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold">Master Escapist</h3>
+                                    <p class="text-sm text-gray-400">Complete 10 rooms without using hints</p>
+                                </div>
+                                <div class="text-yellow-500">
+                                    <i class="fas fa-check-circle text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 bg-slate-800 p-3 rounded-lg">
+                                <div class="achievement-badge bg-gradient-to-r from-blue-500 to-teal-500">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold">Speed Demon</h3>
+                                    <p class="text-sm text-gray-400">Complete a room in under 30 minutes</p>
+                                </div>
+                                <div class="text-yellow-500">
+                                    <i class="fas fa-check-circle text-2xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Available Achievements -->
+                    <div class="glass-effect rounded-xl p-6">
+                        <h2 class="text-2xl font-bold mb-6">Available Achievements</h2>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-4 bg-slate-800 rounded-lg">
+                                <div class="achievement-badge mb-3">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3 class="font-semibold mb-1">Team Player</h3>
+                                <p class="text-sm text-gray-400">Play with 10 different players</p>
+                                <div class="mt-2 text-sm">
+                                    <span class="text-yellow-500">7/10</span>
+                                </div>
+                            </div>
+                            <div class="text-center p-4 bg-slate-800 rounded-lg">
+                                <div class="achievement-badge achievement-locked mb-3">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <h3 class="font-semibold mb-1">Champion</h3>
+                                <p class="text-sm text-gray-400">Reach #1 on leaderboard</p>
+                                <div class="mt-2 text-sm">
+                                    <span class="text-gray-500">Locked</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

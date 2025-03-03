@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms - Escape Quest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <i class="fas fa-key text-2xl text-yellow-500 mr-2"></i>
+                        <span class="text-xl font-bold">Escape Quest</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="rooms.html" class="text-yellow-500">Rooms</a>
+                    <a href="leaderboard.html" class="hover:text-yellow-500 transition-colors">Leaderboard</a>
+                    <a href="help.html" class="hover:text-yellow-500 transition-colors">Help Center</a>
+                    <a href="profile.html" class="hover:text-yellow-500 transition-colors">Profile</a>
+                    <a href="settings.html" class="hover:text-yellow-500 transition-colors">Settings</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Room Selection Header -->
+    <header class="pt-32 pb-12 px-6">
+        <div class="container mx-auto">
+            <h1 class="text-4xl font-bold mb-6">Choose Your Adventure</h1>
+            <!-- Filter and Search -->
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                <div class="flex gap-4 flex-wrap">
+                    <button class="bg-yellow-500 text-black px-4 py-2 rounded-lg">All Rooms</button>
+                    <button class="glass-effect px-4 py-2 rounded-lg">Beginner</button>
+                    <button class="glass-effect px-4 py-2 rounded-lg">Intermediate</button>
+                    <button class="glass-effect px-4 py-2 rounded-lg">Expert</button>
+                </div>
+                <div class="relative">
+                    <input type="text" placeholder="Search rooms..." class="bg-slate-800 text-white px-4 py-2 rounded-lg pl-10 w-full md:w-64">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Room Grid -->
+    <section class="py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Room Card 1 -->
+                <div class="glass-effect rounded-xl overflow-hidden hover-scale">
+                    <img src="https://images.unsplash.com/photo-1499744937866-d7e566a20a61" alt="Ancient Temple" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">The Lost Temple</h3>
+                            <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">Beginner</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Uncover the secrets of an ancient civilization hidden within a mysterious temple.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-yellow-500"><i class="fas fa-star mr-1"></i>4.8 (120 reviews)</span>
+                            <span class="text-gray-300"><i class="fas fa-clock mr-1"></i>60 mins</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300"><i class="fas fa-users mr-1"></i>2-6 players</span>
+                            <a href="lobby.html" class="bg-yellow-500 text-black px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room Card 2 -->
+                <div class="glass-effect rounded-xl overflow-hidden hover-scale">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96" alt="Cyber Lab" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">Cyber Breach</h3>
+                            <span class="bg-yellow-500 text-black text-xs px-2 py-1 rounded">Intermediate</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Stop a dangerous AI from taking control of the world's computer systems.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-yellow-500"><i class="fas fa-star mr-1"></i>4.9 (85 reviews)</span>
+                            <span class="text-gray-300"><i class="fas fa-clock mr-1"></i>45 mins</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300"><i class="fas fa-users mr-1"></i>1-4 players</span>
+                            <a href="lobby.html" class="bg-yellow-500 text-black px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room Card 3 -->
+                <div class="glass-effect rounded-xl overflow-hidden hover-scale">
+                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401" alt="Magic Academy" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">Magic Academy</h3>
+                            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">Expert</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Master the arts of magic to escape from the enchanted academy.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-yellow-500"><i class="fas fa-star mr-1"></i>4.7 (95 reviews)</span>
+                            <span class="text-gray-300"><i class="fas fa-clock mr-1"></i>75 mins</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300"><i class="fas fa-users mr-1"></i>2-5 players</span>
+                            <a href="lobby.html" class="bg-yellow-500 text-black px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room Card 4 -->
+                <div class="glass-effect rounded-xl overflow-hidden hover-scale">
+                    <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820" alt="Space Station" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">Space Station Crisis</h3>
+                            <span class="bg-yellow-500 text-black text-xs px-2 py-1 rounded">Intermediate</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Fix the critical systems of a damaged space station before oxygen runs out.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-yellow-500"><i class="fas fa-star mr-1"></i>4.6 (78 reviews)</span>
+                            <span class="text-gray-300"><i class="fas fa-clock mr-1"></i>60 mins</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300"><i class="fas fa-users mr-1"></i>2-4 players</span>
+                            <a href="lobby.html" class="bg-yellow-500 text-black px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room Card 5 -->
+                <div class="glass-effect rounded-xl overflow-hidden hover-scale">
+                    <img src="https://images.unsplash.com/photo-1604187351574-c75ca79f5807" alt="Detective Office" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">Detective's Office</h3>
+                            <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">Beginner</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Solve a mysterious case in a 1940s detective's office.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-yellow-500"><i class="fas fa-star mr-1"></i>4.5 (112 reviews)</span>
+                            <span class="text-gray-300"><i class="fas fa-clock mr-1"></i>45 mins</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300"><i class="fas fa-users mr-1"></i>1-4 players</span>
+                            <a href="lobby.html" class="bg-yellow-500 text-black px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room Card 6 -->
+                <div class="glass-effect rounded-xl overflow-hidden hover-scale">
+                    <img src="https://images.unsplash.com/photo-1563089145-599997674d42" alt="Haunted Mansion" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">Haunted Mansion</h3>
+                            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">Expert</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">Escape from a Victorian mansion haunted by restless spirits.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-yellow-500"><i class="fas fa-star mr-1"></i>4.8 (156 reviews)</span>
+                            <span class="text-gray-300"><i class="fas fa-clock mr-1"></i>90 mins</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300"><i class="fas fa-users mr-1"></i>2-6 players</span>
+                            <a href="lobby.html" class="bg-yellow-500 text-black px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 bg-slate-900 mt-12">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <i class="fas fa-key text-2xl text-yellow-500 mr-2"></i>
+                    <span class="text-xl font-bold">Escape Quest</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-300 hover:text-yellow-500 transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-yellow-500 transition-colors">
+                        <i class="fab fa-discord text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-yellow-500 transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

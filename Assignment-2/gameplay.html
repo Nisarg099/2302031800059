@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lost Temple - Escape Quest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .game-view {
+            height: calc(100vh - 5rem);
+        }
+
+        .inventory-item {
+            transition: transform 0.2s;
+        }
+
+        .inventory-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .puzzle-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .puzzle-item:hover {
+            filter: brightness(1.2);
+        }
+
+        .timer {
+            font-family: 'Courier New', monospace;
+        }
+
+        .player-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Game Interface -->
+    <div class="game-view flex">
+        <!-- Main Game Area -->
+        <div class="flex-1 relative">
+            <!-- Game Scene -->
+            <div class="h-full relative">
+                <img src="https://images.unsplash.com/photo-1604548530945-f33c0c298028" 
+                     alt="Temple Interior" 
+                     class="w-full h-full object-cover">
+                
+                <!-- Interactive Elements -->
+                <div class="absolute inset-0">
+                    <!-- Puzzle Elements -->
+                    <div class="puzzle-item absolute top-1/4 left-1/3 w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center hover:bg-yellow-500/40">
+                        <i class="fas fa-puzzle-piece text-yellow-500"></i>
+                    </div>
+                    <div class="puzzle-item absolute top-1/2 right-1/4 w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center hover:bg-blue-500/40">
+                        <i class="fas fa-key text-blue-500"></i>
+                    </div>
+                    <div class="puzzle-item absolute bottom-1/3 left-1/2 w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center hover:bg-green-500/40">
+                        <i class="fas fa-scroll text-green-500"></i>
+                    </div>
+                </div>
+
+                <!-- Game HUD -->
+                <div class="absolute top-0 left-0 right-0 p-4">
+                    <div class="container mx-auto">
+                        <div class="flex justify-between items-center">
+                            <!-- Timer -->
+                            <div class="glass-effect px-4 py-2 rounded-lg flex items-center">
+                                <i class="fas fa-clock text-yellow-500 mr-2"></i>
+                                <span class="timer text-2xl font-bold">54:32</span>
+                            </div>
+                            
+                            <!-- Room Progress -->
+                            <div class="glass-effect px-4 py-2 rounded-lg">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">Progress</span>
+                                    <div class="w-32 h-2 bg-gray-700 rounded-full">
+                                        <div class="w-1/3 h-full bg-yellow-500 rounded-full"></div>
+                                    </div>
+                                    <span class="text-sm">33%</span>
+                                </div>
+                            </div>
+
+                            <!-- Menu Button -->
+                            <button class="glass-effect p-2 rounded-lg hover:bg-white/20">
+                                <i class="fas fa-bars text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="w-80 bg-slate-900 flex flex-col">
+            <!-- Team Status -->
+            <div class="p-4 border-b border-gray-800">
+                <h3 class="text-lg font-semibold mb-3">Team Status</h3>
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="player-avatar" style="background-image: url('https://i.pravatar.cc/150?img=1')"></div>
+                            <span>Alex Smith</span>
+                        </div>
+                        <span class="text-green-500">Online</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="player-avatar" style="background-image: url('https://i.pravatar.cc/150?img=2')"></div>
+                            <span>Emma Wilson</span>
+                        </div>
+                        <span class="text-green-500">Online</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="player-avatar" style="background-image: url('https://i.pravatar.cc/150?img=3')"></div>
+                            <span>James Chen</span>
+                        </div>
+                        <span class="text-green-500">Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inventory -->
+            <div class="p-4 border-b border-gray-800">
+                <h3 class="text-lg font-semibold mb-3">Inventory</h3>
+                <div class="grid grid-cols-4 gap-2">
+                    <div class="inventory-item bg-slate-800 p-2 rounded-lg cursor-pointer">
+                        <img src="https://game-icons.net/icons/ffffff/000000/1x1/delapouite/ancient-key.svg" alt="Key" class="w-full">
+                    </div>
+                    <div class="inventory-item bg-slate-800 p-2 rounded-lg cursor-pointer">
+                        <img src="https://game-icons.net/icons/ffffff/000000/1x1/lorc/scroll-unfurled.svg" alt="Scroll" class="w-full">
+                    </div>
+                    <div class="inventory-item bg-slate-800 p-2 rounded-lg cursor-pointer opacity-50">
+                        <img src="https://game-icons.net/icons/ffffff/000000/1x1/lorc/gem.svg" alt="Empty Slot" class="w-full">
+                    </div>
+                    <div class="inventory-item bg-slate-800 p-2 rounded-lg cursor-pointer opacity-50">
+                        <img src="https://game-icons.net/icons/ffffff/000000/1x1/lorc/crystal-ball.svg" alt="Empty Slot" class="w-full">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hints -->
+            <div class="p-4 border-b border-gray-800">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="text-lg font-semibold">Hints</h3>
+                    <span class="text-yellow-500">2 remaining</span>
+                </div>
+                <button class="w-full bg-yellow-500 text-black py-2 rounded-lg hover:bg-yellow-600 transition-colors">
+                    Use Hint
+                </button>
+            </div>
+
+            <!-- Chat -->
+            <div class="flex-1 flex flex-col">
+                <div class="flex-1 p-4 overflow-y-auto space-y-4">
+                    <!-- System Message -->
+                    <div class="bg-slate-800 rounded-lg p-3 text-sm">
+                        <span class="text-yellow-500">System:</span> The ancient door requires a specific sequence...
+                    </div>
+                    <!-- Player Messages -->
+                    <div class="flex gap-2">
+                        <div class="player-avatar w-8 h-8" style="background-image: url('https://i.pravatar.cc/150?img=1')"></div>
+                        <div class="bg-slate-800 rounded-lg p-3 text-sm flex-1">
+                            I found a key in the corner!
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="player-avatar w-8 h-8" style="background-image: url('https://i.pravatar.cc/150?img=2')"></div>
+                        <div class="bg-slate-800 rounded-lg p-3 text-sm flex-1">
+                            Look at the symbols on the wall
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 border-t border-gray-800">
+                    <div class="relative">
+                        <input type="text" placeholder="Type your message..." 
+                            class="w-full bg-slate-800 text-white rounded-lg pl-4 pr-12 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-yellow-500 hover:text-yellow-600">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puzzle Modal (Hidden by default) -->
+    <div class="fixed inset-0 bg-black/75 flex items-center justify-center hidden">
+        <div class="bg-slate-900 rounded-xl p-6 max-w-2xl w-full mx-4">
+            <div class="flex justify-between items-start mb-4">
+                <h2 class="text-2xl font-bold">Ancient Lock Puzzle</h2>
+                <button class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="bg-slate-800 rounded-lg p-6 mb-6">
+                <!-- Puzzle Content -->
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                    <div class="aspect-square bg-slate-700 rounded-lg flex items-center justify-center cursor-pointer hover:bg-slate-600">
+                        <i class="fas fa-sun text-3xl text-yellow-500"></i>
+                    </div>
+                    <div class="aspect-square bg-slate-700 rounded-lg flex items-center justify-center cursor-pointer hover:bg-slate-600">
+                        <i class="fas fa-moon text-3xl text-blue-500"></i>
+                    </div>
+                    <div class="aspect-square bg-slate-700 rounded-lg flex items-center justify-center cursor-pointer hover:bg-slate-600">
+                        <i class="fas fa-star text-3xl text-purple-500"></i>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-center">
+                    Arrange the symbols in the correct order to unlock the ancient mechanism.
+                </p>
+            </div>
+            <div class="flex justify-end gap-4">
+                <button class="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors">
+                    Reset
+                </button>
+                <button class="px-6 py-2 bg-yellow-500 text-black rounded-lg hover:bg-yellow-600 transition-colors">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

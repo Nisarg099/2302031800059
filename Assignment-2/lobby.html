@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Lobby - Escape Quest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+
+        .player-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <i class="fas fa-key text-2xl text-yellow-500 mr-2"></i>
+                        <span class="text-xl font-bold">Escape Quest</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="rooms.html" class="hover:text-yellow-500 transition-colors">Rooms</a>
+                    <a href="leaderboard.html" class="hover:text-yellow-500 transition-colors">Leaderboard</a>
+                    <a href="help.html" class="hover:text-yellow-500 transition-colors">Help Center</a>
+                    <a href="profile.html" class="hover:text-yellow-500 transition-colors">Profile</a>
+                    <a href="settings.html" class="hover:text-yellow-500 transition-colors">Settings</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Lobby -->
+    <div class="pt-32 pb-20 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Room Info -->
+                <div class="lg:col-span-2">
+                    <div class="glass-effect rounded-xl p-6 mb-8">
+                        <div class="flex items-start justify-between mb-6">
+                            <div>
+                                <h1 class="text-3xl font-bold mb-2">The Lost Temple</h1>
+                                <p class="text-gray-300">Uncover the secrets of an ancient civilization</p>
+                            </div>
+                            <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">Beginner</span>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                            <div class="text-center">
+                                <div class="text-yellow-500 text-lg mb-1">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="text-sm text-gray-300">60 mins</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-yellow-500 text-lg mb-1">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="text-sm text-gray-300">2-6 players</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-yellow-500 text-lg mb-1">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="text-sm text-gray-300">4.8 (120)</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-yellow-500 text-lg mb-1">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="text-sm text-gray-300">Success: 65%</div>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-700 pt-6">
+                            <h3 class="text-xl font-bold mb-4">Room Description</h3>
+                            <p class="text-gray-300 mb-4">
+                                Deep within the heart of an ancient temple lies a treasure trove of mysteries waiting to be uncovered. 
+                                As a team of adventurous archaeologists, you must solve intricate puzzles and decipher ancient scripts 
+                                to unlock the temple's secrets before time runs out.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="bg-slate-800 px-3 py-1 rounded-full text-sm">Ancient Civilization</span>
+                                <span class="bg-slate-800 px-3 py-1 rounded-full text-sm">Puzzle Solving</span>
+                                <span class="bg-slate-800 px-3 py-1 rounded-full text-sm">Adventure</span>
+                                <span class="bg-slate-800 px-3 py-1 rounded-full text-sm">Team Work</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Player Setup -->
+                    <div class="glass-effect rounded-xl p-6">
+                        <h2 class="text-2xl font-bold mb-6">Player Setup</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <!-- Connected Players -->
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">Connected Players (3/6)</h3>
+                                <div class="space-y-4">
+                                    <!-- Player 1 (Host) -->
+                                    <div class="flex items-center justify-between bg-slate-800 p-3 rounded-lg">
+                                        <div class="flex items-center">
+                                            <div class="player-avatar mr-3" style="background-image: url('https://i.pravatar.cc/150?img=1')"></div>
+                                            <div>
+                                                <div class="font-semibold">Alex Smith</div>
+                                                <div class="text-yellow-500 text-sm">Host</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-green-500">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                    </div>
+                                    <!-- Player 2 -->
+                                    <div class="flex items-center justify-between bg-slate-800 p-3 rounded-lg">
+                                        <div class="flex items-center">
+                                            <div class="player-avatar mr-3" style="background-image: url('https://i.pravatar.cc/150?img=2')"></div>
+                                            <div>
+                                                <div class="font-semibold">Emma Wilson</div>
+                                                <div class="text-gray-400 text-sm">Ready</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-green-500">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                    </div>
+                                    <!-- Player 3 -->
+                                    <div class="flex items-center justify-between bg-slate-800 p-3 rounded-lg">
+                                        <div class="flex items-center">
+                                            <div class="player-avatar mr-3" style="background-image: url('https://i.pravatar.cc/150?img=3')"></div>
+                                            <div>
+                                                <div class="font-semibold">James Chen</div>
+                                                <div class="text-gray-400 text-sm">Not Ready</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-gray-500">
+                                            <i class="fas fa-circle"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Invite Players -->
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">Invite Players</h3>
+                                <div class="glass-effect p-4 rounded-lg mb-4">
+                                    <div class="text-center mb-4">
+                                        <div class="text-2xl font-bold text-yellow-500 mb-2">Room Code</div>
+                                        <div class="text-3xl font-mono tracking-wider">XK4P9M</div>
+                                    </div>
+                                    <button class="w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition-colors">
+                                        <i class="fas fa-copy mr-2"></i>Copy Code
+                                    </button>
+                                </div>
+                                <div class="space-y-3">
+                                    <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                                        <i class="fab fa-discord mr-2"></i>Invite via Discord
+                                    </button>
+                                    <button class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors">
+                                        <i class="fas fa-envelope mr-2"></i>Invite via Email
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game Settings -->
+                        <div class="border-t border-gray-700 pt-6">
+                            <h3 class="text-lg font-semibold mb-4">Game Settings</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">Difficulty Level</label>
+                                    <select class="w-full bg-slate-800 border border-gray-700 rounded-lg px-3 py-2">
+                                        <option>Normal</option>
+                                        <option>Hard</option>
+                                        <option>Expert</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">Time Limit</label>
+                                    <select class="w-full bg-slate-800 border border-gray-700 rounded-lg px-3 py-2">
+                                        <option>60 minutes</option>
+                                        <option>45 minutes</option>
+                                        <option>75 minutes</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <button class="bg-gray-700 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-colors">
+                                    Leave Room
+                                </button>
+                                <button class="bg-yellow-500 text-black px-8 py-2 rounded-lg hover:bg-yellow-600 transition-colors">
+                                    Start Game
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Section -->
+                <div class="glass-effect rounded-xl p-6 h-[calc(100vh-8rem)] sticky top-32">
+                    <h2 class="text-2xl font-bold mb-6">Team Chat</h2>
+                    <div class="flex flex-col h-full">
+                        <div class="flex-1 overflow-y-auto mb-4 space-y-4">
+                            <!-- Chat Messages -->
+                            <div class="flex items-start gap-3">
+                                <div class="player-avatar w-8 h-8" style="background-image: url('https://i.pravatar.cc/150?img=1')"></div>
+                                <div>
+                                    <div class="text-sm text-yellow-500 mb-1">Alex Smith</div>
+                                    <div class="bg-slate-800 rounded-lg p-3">
+                                        Hey everyone! Ready for the adventure?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="player-avatar w-8 h-8" style="background-image: url('https://i.pravatar.cc/150?img=2')"></div>
+                                <div>
+                                    <div class="text-sm text-yellow-500 mb-1">Emma Wilson</div>
+                                    <div class="bg-slate-800 rounded-lg p-3">
+                                        Yes! Can't wait to start!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="player-avatar w-8 h-8" style="background-image: url('https://i.pravatar.cc/150?img=3')"></div>
+                                <div>
+                                    <div class="text-sm text-yellow-500 mb-1">James Chen</div>
+                                    <div class="bg-slate-800 rounded-lg p-3">
+                                        Just need a minute to get ready.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Chat Input -->
+                        <div class="relative">
+                            <input type="text" placeholder="Type your message..." 
+                                class="w-full bg-slate-800 text-white rounded-lg pl-4 pr-12 py-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-yellow-500 hover:text-yellow-600">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
